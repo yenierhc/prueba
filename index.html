@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1 id="timer">00:00:00</h1>
-	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
+	<iframe id="prueba" src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
 
 
 <script type="text/javascript">
@@ -31,7 +31,9 @@
 			segundosTimer--;
 			console.log(segundosTotales);
 				if (document.getElementById("timer").innerHTML == "00:00:00") {
+					document.getElementById("prueba").style.display = "none";
 					alert('Hemos terminado el examen pues el tiempo se ha agotado \nSi has recibido este mensaje no has enviado tu cuestionario \nEl sistema le otorgará automáticamente la nota de CERO');
+
 				}
 			if (segundosTotales > 0) {
 			setTimeout(timer,1000);
