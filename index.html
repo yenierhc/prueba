@@ -16,7 +16,7 @@
 
 <script type="text/javascript">
 	( function (){
-			let segundosTimer = 3600;
+			let segundosTimer = 10;
 			timer();
 		function timer(){
 			let segundosTotales = segundosTimer; //30 minutos
@@ -31,7 +31,7 @@
 			segundosTimer--;
 			console.log(segundosTotales);
 				if (document.getElementById("timer").innerHTML == "00:00:00") {
-					document.getElementById("prueba").style.display = "none";
+					document.getElementById("prueba").style.display = "none"
 					alert('Hemos terminado el examen pues el tiempo se ha agotado \nSi has recibido este mensaje no has enviado tu cuestionario \nEl sistema le otorgará automáticamente la nota de CERO');
 
 				}
