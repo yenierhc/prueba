@@ -11,13 +11,13 @@
 </head>
 <body onblur="cerrado()">
 	<h1>Esto es prueba de cambio</h1>
-	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
+	<iframe id="prueba" src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="500" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
 </body>
 
 
 <script type="text/javascript">
 	function cerrado(){
-		$('body').attr('style','disable');
+		$('[id = "prueba"]').attr('style','disable');
 	}
 </script>
 	
