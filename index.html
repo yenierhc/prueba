@@ -10,15 +10,62 @@
 	<title>Prueba escrita</title>
 </head>
 <body>
-	<iframe id="prueba" style="background-color:#007bff;padding-top:40px;" src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="100vh" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
-</body>
+	<h1 id="timer">00:00:00</h1>
+	<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
 
 
 <script type="text/javascript">
-	function cerrado(){
-		$('[id = "prueba"]').attr('style','display:none');
-		alert('El examen ha sido bloqueado por intento de fraude. Si cree que es un error contacte al profesor. Gracias')
-	}
+	( function (){
+			let segundosTimer = 10;
+			timer();
+		function timer(){
+			let segundosTotales = segundosTimer; //30 minutos
+			horas = Math.floor(segundosTotales / 3600);
+			horas = ((horas <  10)? "0" : "") + horas;
+			segundosTotales %= 3600;
+			minutos =  Math.floor(segundosTotales / 60);
+			minutos = ((minutos < 10)? "0":"") + minutos;
+			segundosTotales %= 60;
+			segundosTotales = ((segundosTotales<10)?"0":"")+segundosTotales;
+			document.getElementById("timer").innerHTML = horas + ":"+ minutos +":"+segundosTotales;
+			segundosTimer--;
+			console.log(segundosTotales);
+				if (document.getElementById("timer").innerHTML == "00:00:00") {
+					alert('Hemos terminado el examen pues el tiempo se ha agotado \nSi has recibido este mensaje no has enviado tu cuestionario \nEl sistema le otorgará automáticamente la nota de CERO');
+				}
+			if (segundosTotales > 0) {
+			setTimeout(timer,1000);
+
+			}
+		}
+	})();
 </script>
+
+</body>
+
+
+
+
+<style type="text/css">
+	h1{
+		padding:10px 0 60px 0;
+		z-index: 100;
+		width: 100%;
+		text-align: center;
+		color:gray;
+		display:block;
+		position:absolute;
+		top:0;
+	}
+	iframe{
+		padding-top:80px;
+	position: fixed;
+    border: none;
+    top: 0; right: 0;
+    bottom: 0; left: 0;
+    width: 100%;
+    height: 100%;
+	}
+</style>
 	
 </html>
