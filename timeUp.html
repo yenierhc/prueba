@@ -10,7 +10,18 @@
 	<title>Prueba escrita</title>
 </head>
 <body onload="noBack()">
-	<h1 id="msg" style="text-align: center;margin-top:20px;color:gray;">El tiempo de examen se ha acabado<br>Si cree que es un error contacte al profesor</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 id="msg" style="text-align: center;margin-top:20px;color:gray;">El tiempo de examen se ha acabado<br>Si cree que es un error contacte al profesor</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<a class="btn btn-success" href="https://api.whatsapp.com/send?phone=50583776321&text=Tengo problemas con el examen">Contactar</a>
+			</div>
+		</div>
+	</div>
 </body>
 <script type="text/javascript">
 	function noBack(){
