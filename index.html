@@ -7,11 +7,10 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="script.js"></script>
 	<title>Prueba escrita</title>
 </head>
 <body>
-	<h1 id="timer">00:00:00</h1>
+	<h1 id="countdown">00:00:00</h1>
 	<div class="container">
 		<iframe id="prueba" src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
 	</div>
@@ -22,43 +21,41 @@
 		  if ( document.hasFocus() ) {
 		  } else {
 		    document.getElementById("prueba").style.display = "none";
-		    return alert('La acción que ha realizado no es permitida y se considera fraude\nEl examen ha sido cerrado y su no ta es CERO');
-
+		    document.getElementById('countdown').style.display = "none";
+		    window.open("exit.html","_self")
 		  }
 		}
-	( function (){
-			let segundosTimer = 60*60;
-			timer();
-		function timer(){
-			let segundosTotales = segundosTimer; //30 minutos
-			horas = Math.floor(segundosTotales / 3600);
-			horas = ((horas <  10)? "0" : "") + horas;
-			segundosTotales %= 3600;
-			minutos =  Math.floor(segundosTotales / 60);
-			minutos = ((minutos < 10)? "0":"") + minutos;
-			segundosTotales %= 60;
-			segundosTotales = ((segundosTotales<10)?"0":"")+segundosTotales;
-			document.getElementById("timer").innerHTML = horas + ":"+ minutos +":"+segundosTotales;
-			segundosTimer--;
-			console.log(segundosTotales);
-				if (document.getElementById("timer").innerHTML == "00:00:00") {
-					document.getElementById("prueba").style.display = "none"
-					alert('Hemos terminado el examen pues el tiempo se ha agotado \nSi has recibido este mensaje no has enviado tu cuestionario \nEl sistema le otorgará automáticamente la nota de CERO');
-
-				}
-			if (segundosTotales > 0) {
-			setTimeout(timer,1000);
-
-			}
+	var seconds = 3;
+	function secondPassed(){
+		var hours = (Math.floor(seconds/3600));
+		hours = ((hours < 10)? "0":"")+hours;
+		var minutes = (Math.round((seconds - 30)/60)) % 60;
+		if (minutes < 10) { minutes = "0" + minutes};
+		var remainingSeconds = seconds % 60;
+		if (remainingSeconds < 10) {
+			remainingSeconds = "0" + remainingSeconds;
 		}
-	})();
+		document.getElementById('countdown').innerHTML = hours + ":" + minutes + ":" + remainingSeconds;
+		if (seconds == 0) {
+			clearInterval(countdownTimer);
+			window.open("timeUp.html","_self");
+		}else{
+			if ($('div').hasClass('freebirdFormviewerViewResponseConfirmationMessag')) {
+				window.open("end.html","_self");
+			}
+			seconds --;
+		}
+		
+	}
+	var countdownTimer = setInterval('secondPassed()',1000);
+	$(document)
+		.ready(function(){
+			
+		});
+	
 </script>
 
 </body>
-
-
-
-
 <style type="text/css">
 	h1{
 		padding:10px 0 60px 0;
