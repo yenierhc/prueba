@@ -7,12 +7,25 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Prueba escrita</title>
 </head>
 <body onload="noBack()">
-	<h1 id="msg" style="text-align: center;margin-top:20px;color:gray;">Hemos recibido sus respuestas<br>Gracias por participar<br>En breve el profesor contactará con usted</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<i class="far fa-paper-plane"></i>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<p>Hemos recibido sus respuestas.<br>Gracias por participar.</p>
+			</div>
+		</div>
+	</div>
 </body>
-<script type="text/javascript">
+<script>
 	function noBack(){
     window.location.hash="no-back-button";
     window.location.hash="Again-No-back-button" //chrome
