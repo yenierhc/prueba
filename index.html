@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Prueba escrita</title>
 </head>
-<body>
+<body onload="remainingTime()">
 	<h1 id="countdown">00:00:00</h1>
 	<div class="container">
 		<iframe id="prueba" src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
@@ -21,9 +21,9 @@
 		function checkFocus() {
 		  if ( document.hasFocus() ) {
 		  } else {
-		    //document.getElementById("prueba").style.display = "none";
-		   // document.getElementById('countdown').style.display = "none";
-		    //window.open("exit.html","_self")
+		    document.getElementById("prueba").style.display = "none";
+		    document.getElementById('countdown').style.display = "none";
+		    window.open("exit.html","_self")
 		  }
 		}
 	var seconds = 20*60;
@@ -52,8 +52,20 @@
 			window.open('end.html','_self');
 		}*/
 	}
-	var countdownTimer = setInterval(function(){secondPassed();response()},1000);
-
+	var countdownTimer = setInterval(function(){secondPassed();counter()},1000);
+	
+	function counter(){
+		localStorage.setItem("time", seconds);
+		var intentos = localStorage.getItem("time");
+		console.log(intentos);
+	};
+	window.onbeforeunload = function(){
+		counter();
+	};
+	function remainingTime(){
+		var remains = localStorage.getItem("time");
+		seconds = remains;
+	}
 
 
 
