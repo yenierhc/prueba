@@ -21,9 +21,9 @@
 		function checkFocus() {
 		  if ( document.hasFocus() ) {
 		  } else {
-		    document.getElementById("prueba").style.display = "none";
-		    document.getElementById('countdown').style.display = "none";
-		    window.open("exit.html","_self")
+		    //document.getElementById("prueba").style.display = "none";
+		   // document.getElementById('countdown').style.display = "none";
+		    //window.open("exit.html","_self")
 		  }
 		}
 	var seconds = 20*60;
@@ -41,19 +41,22 @@
 			clearInterval(countdownTimer);
 			window.open("timeUp.html","_self");
 		}else{
-			if ($('div').hasClass('freebirdFormviewerViewResponseConfirmationMessag')) {
-				window.open("end.html","_self");
-			}
 			seconds --;
 		}
-		
 	}
-	var countdownTimer = setInterval('secondPassed()',1000);
-	$(document)
-		.ready(function(){
-			
-		});
-	
+	function response(){
+		if ($('[id="prueba"]').hasClass('freebirdFormviewerViewResponseConfirmationMessage')) {
+			alert('al fin');
+		}
+		/*if ($('div').hasClass('freebirdFormviewerViewResponseConfirmContentContainer')) {
+			window.open('end.html','_self');
+		}*/
+	}
+	var countdownTimer = setInterval(function(){secondPassed();response()},1000);
+
+
+
+
 </script>
 
 </body>	
