@@ -24,7 +24,7 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-12">
-						<input type="number" required id="testDuration" class="form-control" placeholder="Tiempo de examen">
+						<input type="number" required id="testDuration" class="form-control" placeholder="Tiempo (minutos)">
 					</div>
 				</div>
 			<div class="row">
@@ -33,7 +33,7 @@
 				</div>
 			<div class="row">
 				<div class="col-md-12">
-					<button class="btn btn-success" onclick="data()">Guardar datos introducidos</button>
+					<button class="btn btn-success" onclick="data()">Ir al examen recién creado</button>
 				</div>
 			</div>
 			</div>
@@ -48,7 +48,8 @@
 			localStorage.setItem("url", document.getElementById('url').value);
 			var testDuration = localStorage.getItem("testDuration");
 			var url = localStorage.getItem("url");
-			alert('Duracion: ' + testDuration + '\nDireccion: ' + url);
+			window.open('index.html','_self');
+			console.log(testDuration + url)
 		}
 	</script>
 
