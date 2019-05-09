@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Prueba escrita</title>
 </head>
-<body>
+<body onload="checkStatus()">
 	<div class="container" style="width: 600px;">
 		<div class="row">
 			<div class="col-md-6">
@@ -50,6 +50,13 @@
 			var url = localStorage.getItem("url");
 			window.open('index.html','_self');
 			console.log(testDuration + url)
+		}
+		function checkStatus(){
+			localStorage.getItem("fraud");
+			if (fraud = true) {
+				localStorage.setItem('fraud','false');
+				alert(localStorage.getItem('fraud'));
+			}
 		}
 	</script>
 
