@@ -21,12 +21,12 @@
 		function checkFocus() {
 		  if ( document.hasFocus() ) {
 		  } else {
-		    document.getElementById("prueba").style.display = "none";
-		    document.getElementById('countdown').style.display = "none";
+		   // document.getElementById("prueba").style.display = "none";
+		   // document.getElementById('countdown').style.display = "none";
 		    window.open("exit.html","_self")
 		  }
 		}
-	var seconds =60*60;
+	var seconds = 5;
 	function secondPassed(){
 		var hours = (Math.floor(seconds/3600));
 		hours = ((hours < 10)? "0":"")+hours;
@@ -57,6 +57,10 @@
 	function counter(){
 		localStorage.setItem("time", seconds);
 		var intentos = localStorage.getItem("time");
+		if (seconds < 600) {
+			document.getElementById('countdown').style.background = "red";
+			document.getElementById('countdown').style.color = white;
+		}
 	};
 	window.onbeforeunload = function(){
 		counter();
@@ -71,8 +75,6 @@
 			window.open("exit.html","_self");
 		}
 	}
-
-
 
 </script>
 

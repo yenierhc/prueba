@@ -12,7 +12,7 @@
 	<title>Prueba escrita</title>
 	<title></title>
 </head>
-<body onload="noBack()">
+<body onload="noBack();searchFraud()">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -38,6 +38,9 @@
     window.location.hash="Again-No-back-button" //chrome
     window.onhashchange=function(){window.location.hash="no-back-button";
     localStorage.setItem("fraud","true");
+	}
+	function searchFraud(){
+		localStorage.setItem("fraud","true");
 	}
 }
 </script>
