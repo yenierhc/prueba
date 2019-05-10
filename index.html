@@ -18,9 +18,51 @@
 	</div>
 	
 	<!--Modal de salida de la pagina-->
+	<div class="modal fade" id="exit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title"><i class="far fa-times-circle"></i>Notificación</h5>
+		      </div>
+		      <div class="modal-body">
+		        <p>Ud. ha salido de el formulario asignado lo cual no está permitido.<br>Por lo tanto el examen ha sido suspendido.<br>Si cree que es un error comuniquese con su profesor.</p>
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	<!--Modal para avisar de uso de abertura una vez cerrado el formulario-->
+	<div class="modal fade" id="notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i>Notificación</h5>
+		      </div>
+		      <div class="modal-body">
+		        <p>Está tratando de acceder a un formulario que fue cerrado por una de las siguientes razones:<br>1. Se acabó el tiempo otorgado para responder el formulario. <br>2. Intentó hacer acciones no autorizadas. <br><br>Si cree que esto es incorrecto. <br>Contacte a su profesor</p>
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		    </div>
+		  </div>
+		</div>
 	
 	<!--Modal para tiempo acabado-->
-	
+	<div class="modal fade" id="timeup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title"><i class="far fa-times-circle"></i>Notificación</h5>
+		      </div>
+		      <div class="modal-body">
+		        <p>El tiempo de examen se ha acabado.<br>Gracias por participar!!!.</p>
+		      </div>
+		      <div class="modal-footer">
+		      </div>
+		    </div>
+		  </div>
+		</div>
 
 <script>
 	//frecuencia de chequeo del foco en la pagina
@@ -29,7 +71,8 @@
 	function checkFocus() {
 	  if ( document.hasFocus() ) {
 	  } else {
-	    window.open('exit.html','_self','location=no');
+	  	$('#exit').modal('show');
+	    //window.open('exit.html','_self','location=no');
 	  }
 	};
 	var seconds = 3;
@@ -46,7 +89,8 @@
 		document.getElementById('countdown').innerHTML = hours + ":" + minutes + ":" + remainingSeconds;
 		if (seconds == 0) {
 			clearInterval(countdownTimer);
-			window.open('timeUp.html','_self');
+			$('#timeup').modal('show');
+			//window.open('timeUp.html','_self');
 		}else{
 			seconds --;
 		}
@@ -61,18 +105,22 @@
 	//guardar el tiempo cuando se cierra la pagina
 	window.onbeforeunload = function(e){
 		localStorage.setItem("time", "300");
-		localStorage.setItem("status","")
 	}
 	//cargar el tiempo al acutalizar
 	window.onload = function(e){
 		var time = localStorage.getItem("time");
 		seconds = time;
 		var status = localStorage.getItem("status");
-		if (status = "exit") {
-			window.open('exit.html','_self');
-		}else if (status = "timeup") {
-			window.open('timeUp.html','_self');
+		if (status == "done") {
+			$('#notification').modal('show');
+			//window.open('exit.html','_self');
 		}
+		$('#exit').on('show.bs.modal', function (e) {
+			localStorage.setItem('status','done');
+		});
+		$('#timeup').on('show.bs.modal', function (e) {
+			localStorage.setItem('status','done');
+		});
 	}
 </script>
 

@@ -11,52 +11,15 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Prueba escrita</title>
 </head>
-<body onload="checkStatus()">
-	<div class="container" style="width: 600px;">
-		<div class="row">
-			<div class="col-md-6">
-			<div class="col-md-12">
-				<i class="fas fa-cog"></i>
-				<p>Acá introduce los datos necesarios<br>para el funcionamiento correcto del sistema.</p>
-			</div>
+<body>
+	<div class="container">
+		<button type="button" class="btn btn-success" onclick="reset()">Reset</button>
 		</div>
-		<div class="col-md-6" style="padding-top:40px;">
-			<div class="col-md-12">
-				<div class="row">
-					<div class="col-md-12">
-						<input type="number" required id="testDuration" class="form-control" placeholder="Tiempo (minutos)">
-					</div>
-				</div>
-			<div class="row">
-				<div class="col-md-12">
-					<input type="url" required id="url" class="form-control" placeholder="Dirección del examen online"></div>
-				</div>
-			<div class="row">
-				<div class="col-md-12">
-					<button class="btn btn-success" onclick="data()">Ir al examen recién creado</button>
-				</div>
-			</div>
-			</div>
-		</div>
-		</div>
-	</div>
 
 
 	<script>
-		function data(){
-			localStorage.setItem("testDuration", document.getElementById('testDuration').value);
-			localStorage.setItem("url", document.getElementById('url').value);
-			var testDuration = localStorage.getItem("testDuration");
-			var url = localStorage.getItem("url");
-			window.open('index.html','_self');
-			console.log(testDuration + url)
-		}
-		function checkStatus(){
-			localStorage.getItem("status");
-			if (status = "exit") {
-				localStorage.setItem('fraud','false');
-				alert(localStorage.getItem('fraud'));
-			}
+		function reset(){
+			localStorage.clear();
 		}
 	</script>
 

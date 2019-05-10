@@ -1,26 +1,22 @@
 i{
 	padding:0 10px 0 0;
 }
-.container-message{
+.container{
 		margin:auto;
 		padding:0;
 		border-top-left-radius: 7px;
 		border-top-right-radius: 7px;
 		margin-top:50px;
 		width:70%;
-		border:1px solid rgb(189,189,189);
 	}
-.modal-header{
-	border:1px solid #dc3545;
-}
-.col-md-12{
+.col-md-12,.modal-body{
 	color:gray;
 	font-weight: bolder;
 	font-size: 1.5rem;
 	text-align: center;
 	margin:20px auto;
 }
-i,h5{ display: block;
+i, h5{ display: block;
 	font-size:2rem;
 	color:white;
 }
