@@ -7,26 +7,33 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Prueba escrita</title>
 </head>
-<body onload="remainingTime();cancelExam()">
+<body>
 	<h1 id="countdown">00:00:00</h1>
 	<div class="container">
 		<iframe id="prueba" src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
 	</div>
+	
+	<!--Modal de salida de la pagina-->
+	
+	<!--Modal para tiempo acabado-->
+	
 
 <script>
+	//frecuencia de chequeo del foco en la pagina
 	setInterval(checkFocus,10);
-		function checkFocus() {
-		  if ( document.hasFocus() ) {
-		  } else {
-		   // document.getElementById("prueba").style.display = "none";
-		   // document.getElementById('countdown').style.display = "none";
-		    window.open("exit.html","_self")
-		  }
-		}
-	var seconds = 5;
+	//chequear el foco de la pagina
+	function checkFocus() {
+	  if ( document.hasFocus() ) {
+	  } else {
+	    window.open('exit.html','_self','location=no');
+	  }
+	};
+	var seconds = 3;
+	//representar el temporizador
 	function secondPassed(){
 		var hours = (Math.floor(seconds/3600));
 		hours = ((hours < 10)? "0":"")+hours;
@@ -39,43 +46,34 @@
 		document.getElementById('countdown').innerHTML = hours + ":" + minutes + ":" + remainingSeconds;
 		if (seconds == 0) {
 			clearInterval(countdownTimer);
-			window.open("timeUp.html","_self");
+			window.open('timeUp.html','_self');
 		}else{
 			seconds --;
 		}
-	}
-	function response(){
-		if ($('[id="prueba"]').hasClass('freebirdFormviewerViewResponseConfirmationMessage')) {
-			alert('al fin');
-		}
-		/*if ($('div').hasClass('freebirdFormviewerViewResponseConfirmContentContainer')) {
-			window.open('end.html','_self');
-		}*/
-	}
+	};
 	var countdownTimer = setInterval(function(){secondPassed();counter()},1000);
-	
+	//avisar con rojo a los 10 minutos finales
 	function counter(){
-		localStorage.setItem("time", seconds);
-		var intentos = localStorage.getItem("time");
 		if (seconds < 600) {
-			document.getElementById('countdown').style.background = "red";
-			document.getElementById('countdown').style.color = white;
+			document.getElementById('countdown').style.color = "red";
 		}
 	};
-	window.onbeforeunload = function(){
-		counter();
-	};
-	function remainingTime(){
-		var remains = localStorage.getItem("time");
-		seconds = remains;
+	//guardar el tiempo cuando se cierra la pagina
+	window.onbeforeunload = function(e){
+		localStorage.setItem("time", "300");
+		localStorage.setItem("status","")
 	}
-	function cancelExam(){
-		var fraud = localStorage.getItem("fraud");
-		if (fraud = true) {
-			window.open("exit.html","_self");
+	//cargar el tiempo al acutalizar
+	window.onload = function(e){
+		var time = localStorage.getItem("time");
+		seconds = time;
+		var status = localStorage.getItem("status");
+		if (status = "exit") {
+			window.open('exit.html','_self');
+		}else if (status = "timeup") {
+			window.open('timeUp.html','_self');
 		}
 	}
-
 </script>
 
 </body>	

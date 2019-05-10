@@ -12,35 +12,28 @@
 	<title>Prueba escrita</title>
 	<title></title>
 </head>
-<body onload="noBack();searchFraud()">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<i class="far fa-times-circle"></i>
-			</div>
+<body>
+	<div class="container-message">
+		<div class="modal-header">
+			<h5 class="modal-title"><i class="far fa-times-circle"></i>Notificación</h5>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<p>Ud. ha salido de el formulario asignado lo cual no está permitido.<br>Por lo tanto el examen ha sido suspendido.<br>Si cree que es un error comuniquese con su profesor.</p>
+		 <div class="modal-body">
+	      	<div class="row">
+				<div class="col-md-12">
+					<p>Ud. ha salido de el formulario asignado lo cual no está permitido.<br>Por lo tanto el examen ha sido suspendido.<br>Si cree que es un error comuniquese con su profesor.</p>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<a class="btn btn-success" href="https://api.whatsapp.com/send?phone=50583776321&text=Tengo problemas con el examen"><i class="fab fa-whatsapp"></i>Whatsapp</a>
-				<a href="tel:+50583776321" class="btn btn-primary"><i class="fas fa-mobile-alt"></i>Teléfono</a>
-				<a href="mailto:yenierhc@gmail.com" class="btn btn-danger"><i class="far fa-envelope"></i>Correo electrónico</a>
-			</div>
-		</div>
+	      </div>
 	</div>
 <script>
-	function noBack(){
-    window.location.hash="no-back-button";
-    window.location.hash="Again-No-back-button" //chrome
-    window.onhashchange=function(){window.location.hash="no-back-button";
-    localStorage.setItem("fraud","true");
+	window.onload = function(){
+		localStorage.setItem("status","exit");
+		noBack();
 	}
-	function searchFraud(){
-		localStorage.setItem("fraud","true");
+	function noBack(){
+	    window.location.hash="no-back-button";
+	    window.location.hash="Again-No-back-button" //chrome
+	    window.onhashchange=function(){window.location.hash="no-back-button";
 	}
 }
 </script>

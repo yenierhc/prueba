@@ -52,8 +52,8 @@
 			console.log(testDuration + url)
 		}
 		function checkStatus(){
-			localStorage.getItem("fraud");
-			if (fraud = true) {
+			localStorage.getItem("status");
+			if (status = "exit") {
 				localStorage.setItem('fraud','false');
 				alert(localStorage.getItem('fraud'));
 			}

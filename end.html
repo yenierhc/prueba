@@ -27,9 +27,12 @@
 </body>
 <script>
 	function noBack(){
-    window.location.hash="no-back-button";
-    window.location.hash="Again-No-back-button" //chrome
-    window.onhashchange=function(){window.location.hash="no-back-button";}
+		alert(status);
+		localStorage.setItem('status','end');
+	    window.location.hash="no-back-button";
+	    window.location.hash="Again-No-back-button" //chrome
+	    window.onhashchange=function(){window.location.hash="no-back-button";
+	}
 }
 </script>
 </html>

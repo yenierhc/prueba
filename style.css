@@ -1,10 +1,18 @@
 i{
 	padding:0 10px 0 0;
 }
-.container{
+.container-message{
+		margin:auto;
+		padding:0;
+		border-top-left-radius: 7px;
+		border-top-right-radius: 7px;
 		margin-top:50px;
 		width:70%;
+		border:1px solid rgb(189,189,189);
 	}
+.modal-header{
+	border:1px solid #dc3545;
+}
 .col-md-12{
 	color:gray;
 	font-weight: bolder;
@@ -12,9 +20,12 @@ i{
 	text-align: center;
 	margin:20px auto;
 }
-div > i{ display: block;
-	font-size:10rem;
-	color:gray;
+i,h5{ display: block;
+	font-size:2rem;
+	color:white;
+}
+.modal-header{
+	background-color:#dc3545;
 }
 h1{
 	padding:10px 0 60px 0;
