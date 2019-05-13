@@ -12,7 +12,7 @@
 	<title>Prueba escrita</title>
 </head>
 <body>
-	<div class="container" style="width:300px;">
+	<div class="container" style="width:80%;">
 		<div class="modal-header">
 	       <h5 class="modal-title"><i class="fas fa-cogs"></i>Configuración</h5>
 	      </div>
@@ -23,10 +23,16 @@
 		       		<input type="number" id="time" class="form-control">
 		       	</div>
 		       </div>
+		       <div class="row" style="padding: 10px">
+		       	<div class="col-md-12" >
+		       		<label>Fuente de examen</label>
+		       		<textarea id="route" class="form-control" rows="5"></textarea>
+		       	</div>
+		       </div>
 		       <div class="row" style="padding:10px">
 		       <div class="row" style="padding:10px">
 		       	<div class="col-md-12">
-		       		<button class="btn btn-success" onclick="set()">Guardar</button>
+		       		<button class="btn btn-danger" onclick="set()">Guardar</button>
 		       	</div>
 		       </div>
 		      </div>
@@ -35,8 +41,11 @@
 	<script>
 		function set(){
 			var time = document.getElementById('time').value;
+			var frame = document.getElementById('route').value;
 			localStorage.setItem('time', time);
 			localStorage.setItem('status','');
+			localStorage.setItem('iframe', frame);
+			alert('Los datos han sido registrados satisfactoriamente. Gracias!!!');
 		}
 	</script>
 

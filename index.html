@@ -21,7 +21,7 @@
 	    window.open('exit.html', '_self');
 	  }
 	};
-	var seconds = 450;
+	var seconds = localStorage.getItem('time');
 	//representar el temporizador
 	function secondPassed(){
 		var hours = (Math.floor(seconds/3600));
@@ -45,7 +45,7 @@
 	//avisar con rojo a los 10 minutos finales
 	function counter(){
 		if (seconds < 600) {
-			document.getElementById('countdown').style.color = "red";
+			document.getElementById('countdown').style.color = "#dc3545";
 		}
 	};
 	//guardar el tiempo cuando se cierra la pagina
@@ -57,7 +57,10 @@
 		var time = localStorage.getItem("time");
 		seconds = time;
 		var address = localStorage.getItem('address');
-		document.getElementById('prueba').src = address;
+		$('div').each(function(){
+			var frame = localStorage.getItem("iframe");
+			$(this).append(frame);
+		})
 		var status = localStorage.getItem("status");
 		if (status == "done") {
 			//$('#notification').modal('show');
@@ -70,12 +73,15 @@
 			localStorage.setItem('status','done');
 		});
 	}
+	function parpadear(){
+		
+	}
 </script>
 </head>
 <body>
-	<h1 id="countdown">00:00:00</h1>
+	<h1 class="parpadea" id="countdown">00:00:00</h1>
 	<div class="container-fluid">
-		<iframe id="prueba" src="https://docs.google.com/forms/d/e/1FAIpQLSfGfex_G9q6bquYpdsqmc47eGxhPstfP3bgYXbpDi9GtWOczw/viewform?embedded=true" width="100%" height="" frameborder="0" marginheight="0" marginwidth="0">Cargando...</iframe>
+		
 	</div>
 
 
