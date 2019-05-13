@@ -47,6 +47,11 @@
 		if (seconds < 600) {
 			document.getElementById('countdown').style.color = "#dc3545";
 		}
+		if (seconds < 60) {
+			$('[id = "countdown"]').each(function(){
+				$(this).addClass("parpadea");
+			});
+		}
 	};
 	//guardar el tiempo cuando se cierra la pagina
 	window.onbeforeunload = function(e){
@@ -73,13 +78,10 @@
 			localStorage.setItem('status','done');
 		});
 	}
-	function parpadear(){
-		
-	}
 </script>
 </head>
 <body>
-	<h1 class="parpadea" id="countdown">00:00:00</h1>
+	<h1 class="" id="countdown">00:00:00</h1>
 	<div class="container-fluid">
 		
 	</div>
