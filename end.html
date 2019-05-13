@@ -11,24 +11,23 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<title>Prueba escrita</title>
 </head>
-<body onload="noBack()">
+<body>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<i class="far fa-paper-plane"></i>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<p>Hemos recibido sus respuestas.<br>Gracias por participar.<br>Su profesor ha sido notificado</p>
-			</div>
-		</div>
+	      <div class="modal-header">
+	       <h5 class="modal-title"><i class="fas fa-exclamation-triangle"></i>Notificación</h5>
+	      </div>
+	      <div class="modal-body">
+		        <p>Está tratando de acceder a un formulario que fue cerrado por una de las siguientes razones:<br>1. Se acabó el tiempo otorgado para responder el formulario. <br>2. Intentó hacer acciones no autorizadas. <br><br>Si cree que esto es incorrecto. <br>Contacte a su profesor</p>
+		      </div>
+	    </div>
 	</div>
 </body>
 <script>
+	window.onload = function(){
+		localStorage.setItem("status","done");
+		noBack();
+	}
 	function noBack(){
-		alert(status);
-		localStorage.setItem('status','end');
 	    window.location.hash="no-back-button";
 	    window.location.hash="Again-No-back-button" //chrome
 	    window.onhashchange=function(){window.location.hash="no-back-button";
