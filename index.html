@@ -38,7 +38,11 @@
 			//$('#timeup').modal('show');
 			window.open('timeUp.html','_self');
 		}else{
-			seconds --;
+			if (seconds == 0) {
+				return false
+			}else{
+				seconds --;
+			}
 		}
 	};
 	var countdownTimer = setInterval(function(){secondPassed();counter()},1000);
@@ -49,6 +53,7 @@
 		}
 		if (seconds < 60) {
 			$('[id = "countdown"]').each(function(){
+				document.getElementById('countdown').style.fontWeight = "bolder";
 				$(this).addClass("parpadea");
 			});
 		}
@@ -81,7 +86,7 @@
 </script>
 </head>
 <body>
-	<h1 class="" id="countdown">00:00:00</h1>
+	<h1 id="countdown"></h1>
 	<div class="container-fluid">
 		
 	</div>

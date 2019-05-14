@@ -86,3 +86,9 @@ iframe{
    50% { opacity: 0.0; }
   100% { opacity: 1.0; }
 }
+
+@keyframes parpadeo {
+	0% {font-size: 2.5rem;}
+	50%{font-size: 2.1rem;}
+	100%{font-size:2.5rem;}
+}
