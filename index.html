@@ -11,16 +11,31 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Prueba escrita</title>
 	<script>
+		function checking (){
+			var tiempo_examen = 4800;
+			var ruta_examen = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe5MjXaPsCKS2yQmsHgzmHXT3TXqn3tuWMkwap9P7be6L2qBA/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>';
+			var stat = localStorage.getItem('status');
+			if (stat === 'done') {
+				window.open('html/end.html','_self');
+			}else{
+				localStorage.setItem('prueba', ruta_examen);
+				var t = localStorage.getItem('time');
+				var reload = localStorage.getItem('reloaded');
+				if (reload === 'false') {
+					localStorage.setItem('time',tiempo_examen);
+				}else{
+					//mantiene el mismo tiempo
+				}
+			}
+		}
 	//frecuencia de chequeo del foco en la pagina
 	setInterval(checkFocus,10);
-	localStorage.setItem('time',600);
 	//chequear el foco de la pagina
 	function checkFocus() {
 	  if ( document.hasFocus() ) {
 	  } else {
-	  	//$('#exit').modal('show');
 	  	/*Este cierra el examen al meter la pata*/
-	   window.open('html/exit.html', '_self');
+	 // window.open('html/exit.html', '_self');
 	  }
 	}; 
 	var seconds = localStorage.getItem('time');
@@ -37,8 +52,8 @@
 		document.getElementById('countdown').innerHTML = hours + ":" + minutes + ":" + remainingSeconds;
 		if (seconds == 0) {
 			clearInterval(countdownTimer);
-			//$('#timeup').modal('show');
 			window.open('html/timeUp.html','_self');
+			localStorage.setItem('status','done');
 		}else{
 			seconds --;
 		}
@@ -58,35 +73,35 @@
 	};
 	//guardar el tiempo cuando se cierra la pagina
 	window.onbeforeunload = function(e){
-		localStorage.setItem("time", seconds);
+		localStorage.setItem('time', seconds);
+		localStorage.setItem('reloaded','true');
 	}
 	//cargar el tiempo al acutalizar
 	window.onload = function(e){
-		var time = localStorage.getItem("time");
+		checking();
+		/*var time = localStorage.getItem("time");
 		seconds = time;
-		var address = localStorage.getItem('address');
-		/*$('div').each(function(){
-			var frame = localStorage.getItem("iframe");
-			$(this).append(frame);
-		})*/
 		var status = localStorage.getItem("status");
 		if (status == "done") {
 			//$('#notification').modal('show');
 			window.open('html/end.html','_self');
 		}
-		$('#exit').on('show.bs.modal', function (e) {
+		/*$('#exit').on('show.bs.modal', function (e) {
+			localStorage.clear();
 			localStorage.setItem('status','done');
 		});
 		$('#timeup').on('show.bs.modal', function (e) {
+			localStorage.clear();
 			localStorage.setItem('status','done');
-		});
+		});*/
 	}
 </script>
 </head>
 <body>
-	<h1 class="" id="countdown">00:00:00</h1>
-	<div class="container-fluid">
-		<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe5MjXaPsCKS2yQmsHgzmHXT3TXqn3tuWMkwap9P7be6L2qBA/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+	<h1 class="" id="countdown" onclick="window.close()" style="cursor: pointer">00:00:00</h1>
+
+	<div class="container-fluid" id="test">
+		<script>document.write(localStorage.getItem('prueba'))</script>
 	</div>
 
 
