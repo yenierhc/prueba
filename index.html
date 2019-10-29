@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head onload="checking()">
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -8,26 +8,32 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+	<script type="text/javascript" src="js/script.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Prueba escrita</title>
 	<script>
 		function checking (){
 			var tiempo_examen = 4800;
-			var ruta_examen = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe5MjXaPsCKS2yQmsHgzmHXT3TXqn3tuWMkwap9P7be6L2qBA/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>';
+			var ruta_examen = '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSea0zUP3e-DW0zy7gw2qydsfUTdyOTX0R2TbdMUCgjVNZSbxg/viewform?embedded=true" width="640" height="1447" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>';
+			var t = localStorage.getItem('time');
+			var reload = localStorage.getItem('reloaded');
 			var stat = localStorage.getItem('status');
+
 			if (stat === 'done') {
 				window.open('html/end.html','_self');
 			}else{
 				localStorage.setItem('prueba', ruta_examen);
-				var t = localStorage.getItem('time');
-				var reload = localStorage.getItem('reloaded');
-				if (reload === 'false') {
+				$('#test').append(ruta_examen);
+				
+				if (reload != 'true') {
 					localStorage.setItem('time',tiempo_examen);
+					//alert('aqui estamos');
 				}else{
 					//mantiene el mismo tiempo
 				}
 			}
 		}
+		
 	//frecuencia de chequeo del foco en la pagina
 	setInterval(checkFocus,10);
 	//chequear el foco de la pagina
@@ -35,10 +41,11 @@
 	  if ( document.hasFocus() ) {
 	  } else {
 	  	/*Este cierra el examen al meter la pata*/
-	 // window.open('html/exit.html', '_self');
+	  window.open('html/exit.html', '_self');
+	 localStorage.setItem('status','done');
 	  }
 	}; 
-	var seconds = localStorage.getItem('time');
+	/*var seconds = localStorage.getItem('time');
 	//representar el temporizador
 	function secondPassed(){
 		var hours = (Math.floor(seconds/3600));
@@ -77,8 +84,8 @@
 		localStorage.setItem('reloaded','true');
 	}
 	//cargar el tiempo al acutalizar
-	window.onload = function(e){
-		checking();
+	//window.onload = function(e){
+		//checking();
 		/*var time = localStorage.getItem("time");
 		seconds = time;
 		var status = localStorage.getItem("status");
@@ -94,17 +101,15 @@
 			localStorage.clear();
 			localStorage.setItem('status','done');
 		});*/
-	}
+		window.onload = function(e){
+			checking();
+		}
+	//}
 </script>
 </head>
 <body>
-	<h1 class="" id="countdown" onclick="window.close()" style="cursor: pointer">00:00:00</h1>
-
+	<!--<h1 class="" id="countdown">00:00:00</h1>-->
 	<div class="container-fluid" id="test">
-		<script>document.write(localStorage.getItem('prueba'))</script>
 	</div>
-
-
-
 </body>	
 </html>
