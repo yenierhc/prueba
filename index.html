@@ -20,7 +20,7 @@
 	  } else {
 	  	//$('#exit').modal('show');
 	  	/*Este cierra el examen al meter la pata*/
-	   window.open('exit.html', '_self');
+	   window.open('html/exit.html', '_self');
 	  }
 	}; 
 	var seconds = localStorage.getItem('time');
@@ -38,7 +38,7 @@
 		if (seconds == 0) {
 			clearInterval(countdownTimer);
 			//$('#timeup').modal('show');
-			window.open('timeUp.html','_self');
+			window.open('html/timeUp.html','_self');
 		}else{
 			seconds --;
 		}
@@ -72,7 +72,7 @@
 		var status = localStorage.getItem("status");
 		if (status == "done") {
 			//$('#notification').modal('show');
-			window.open('end.html','_self');
+			window.open('html/end.html','_self');
 		}
 		$('#exit').on('show.bs.modal', function (e) {
 			localStorage.setItem('status','done');
