@@ -8,34 +8,34 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="style.css">
-
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<title>Prueba escrita</title>
+	<title></title>
 </head>
 <body>
 	<div class="container">
-	      <div class="modal-header">
-	        <h5 class="modal-title"><i class="far fa-clock"></i>Notificación</h5>
-	      </div>
-	      <div class="modal-body">
+		<div class="modal-header">
+			<h5 class="modal-title"><i class="far fa-times-circle"></i>Notificación</h5>
+		</div>
+		 <div class="modal-body">
 	      	<div class="row">
 				<div class="col-md-12">
-					<p>El tiempo de examen se ha acabado.<br>Gracias por participar!!!.</p>
+					<p>Ud. ha realizado una acción no permitida en este formulario asignado.<br>Por lo tanto el examen ha sido suspendido.<br>Si cree que es un error comuniquese con su profesor.</p>
 				</div>
 			</div>
 	      </div>
-	    </div>
 	</div>
-</body>
-<script type="text/javascript">
-	window.onload = function(e){
-		localStorage.setItem('status','done');
+<script>
+	window.onload = function(){
+		localStorage.setItem("status","done");
 		noBack();
-	};
-		function noBack(){
-		    window.location.hash="no-back-button";
-		    window.location.hash="Again-No-back-button"; //chrome
-		    window.onhashchange=function(){window.location.hash="no-back-button";}
-		}
-	</script>
+	}
+	function noBack(){
+	    window.location.hash="no-back-button";
+	    window.location.hash="Again-No-back-button" //chrome
+	    window.onhashchange=function(){window.location.hash="no-back-button";
+	}
+}
+</script>
+</body>
 </html>

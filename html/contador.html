@@ -8,7 +8,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<title>Prueba escrita</title>
 	<script>
 	//frecuencia de chequeo del foco en la pagina
@@ -38,11 +38,7 @@
 			//$('#timeup').modal('show');
 			window.open('timeUp.html','_self');
 		}else{
-			if (seconds == 0) {
-				return false
-			}else{
-				seconds --;
-			}
+			seconds --;
 		}
 	};
 	var countdownTimer = setInterval(function(){secondPassed();counter()},1000);
@@ -76,12 +72,6 @@
 			//$('#notification').modal('show');
 			window.open('end.html','_self');
 		}
-		$('#exit').on('show.bs.modal', function (e) {
-			localStorage.setItem('status','done');
-		});
-		$('#timeup').on('show.bs.modal', function (e) {
-			localStorage.setItem('status','done');
-		});
 	}
 </script>
 </head>
